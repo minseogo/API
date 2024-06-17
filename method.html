@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭만들기</title>
+</head>
+<body>
+    <div id="tab">
+        <ul>
+            <li><button class="btn">tab1</button></li>
+            <li><button class="btn">tab2</button></li>
+            <li><button class="btn">tab3</button></li>
+        </ul>
+        <div id="tabcontent">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <script>
+        const mapinfo=[
+            {
+                위도 : "34.21558",
+                경도 : "126.788787"
+            },
+            {
+                위도 : "ㄴㅁㄹㄴㅇㄹㄴ",
+                경도 : "ㄴㅇㅀㅇㅎ"
+            },
+            {
+                위도 : "ㅏㅏㅏㅏㅏㅏ",
+                경도 : "~~~~~~"
+            },
+        ]
+        // const targetdiv = document.getElementById("tabcontent"); id만 있을땐, getElementById를 사용하고, class로 되어있을땐 querySelectorAll로 사용하기
+        const targetdivp = document.querySelectorAll("#tabcontent p");
+        const btn = document.querySelectorAll(".btn");
+        btn.forEach(function(ele, idx){
+            // ele는 각각의 버튼, idx는 0 ~ 순번, 즉 각각의 순번이 대입된것이다.
+          ele.addEventListener('click',function(){
+            contentinner(idx)
+          })
+        })
+        function contentinner(num){ // 선언적 함수의 특징 : 위치상관없이 먼저 번역 및 저장해둔다
+            targetdivp[0].innerHTML = mapinfo[num].위도;
+            targetdivp[1].innerHTML = mapinfo[num].경도;
+        }
+    </script>
+</body>
+</html>
