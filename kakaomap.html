@@ -30,9 +30,9 @@
 
                     mapinfo.forEach(function(ele, idx){
                         maptag += `<li>`;
-                        maptag += `<h2 class="storenm"><strong>지점명</strong><span>${mapinfo[idx].storenm}</span></h2>`;
-                        maptag += `<p class="storeem" ><strong>지점장</strong><span>${mapinfo[idx].storeem}</span></p>`;
-                        maptag += `<p class="addr"><strong>주소</strong><span>${mapinfo[idx].addr}</span></p>`;
+                        maptag += `<h2 class="storenm"><strong>지점명 </strong><span>${ele.storenm}</span></h2>`;
+                        maptag += `<p class="storeem" ><strong>지점장 </strong><span>${ele.storeem}</span></p>`;
+                        maptag += `<p class="addr"><strong>주소 </strong><span>${mapinfo[idx].addr}</span></p>`;
                         maptag += `</li>`;
                     });    
                     $("#store ul").html(maptag);
