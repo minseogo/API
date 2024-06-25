@@ -30,7 +30,13 @@
                 dataType : "json",
                 success : function(mapinfo){
                     console.log("지점정보", mapinfo);
-                    $(".storenm span").html(mapinfo[0].storenm)
+                   
+                        
+                        $(".storenm span").html(mapinfo[0].storenm)
+                        $(".storeem span").html(mapinfo[0].storeem)
+                        $(".addr span").html(mapinfo[0].addr)
+                
+                    
                 },
                 error : function(){
 
@@ -38,5 +44,7 @@
             })
         })
     </script>
+
+
 </body>
 </html>
