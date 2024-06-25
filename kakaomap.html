@@ -8,11 +8,7 @@
 <body>
     <div id="store">
         <ul>
-            <li>
-                <h2 class="storenm"><strong>지점명</strong><span>여기</span></h2>
-                <p class="storeem" ><strong>지점장</strong><span>여기</span></p>
-                <p class="addr"><strong>주소</strong><span>여기</span></p>
-            </li>
+            <!-- 데이터에 맞춤 -->
         </ul>
     </div>
     <script
@@ -23,20 +19,23 @@
 
     <script>
         $(document).ready(function(){
-            // $(".storenm span").html("안녕")
             $.ajax({
                 url : "/project/data/store.json",
                 type : "GET",
                 dataType : "json",
                 success : function(mapinfo){
-                    console.log("지점정보", mapinfo);
-                   
+                    console.log("지점정보", mapinfo);   
+
+                    let maptag = `<li>`;
+
+                        maptag += `<h2 class="storenm"><strong>지점명</strong><span>${mapinfo[0].storenm}</span></h2>`;
+                        maptag += `<p class="storeem" ><strong>지점장</strong><span>${mapinfo[0].storeem}</span></p>`;
+                        maptag += `<p class="addr"><strong>주소</strong><span>${mapinfo[0].addr}</span></p>`;
+                        // 데이터에 따라서 커스터마이징
+                        maptag += `</li>`;
                         
-                        $(".storenm span").html(mapinfo[0].storenm)
-                        $(".storeem span").html(mapinfo[0].storeem)
-                        $(".addr span").html(mapinfo[0].addr)
-                
-                    
+                    $("#store ul").html(maptag);
+
                 },
                 error : function(){
 
