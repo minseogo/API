@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="store">
+        <ul>
+            <li>
+                <h2 class="storenm"><strong>지점명</strong><span>여기</span></h2>
+                <p class="storeem" ><strong>지점장</strong><span>여기</span></p>
+                <p class="addr"><strong>주소</strong><span>여기</span></p>
+            </li>
+        </ul>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            // $(".storenm span").html("안녕")
+            $.ajax({
+                url : "/project/data/store.json",
+                type : "GET",
+                dataType : "json",
+                success : function(mapinfo){
+                    console.log("지점정보", mapinfo);
+                    $(".storenm span").html(mapinfo[0].storenm)
+                },
+                error : function(){
+
+                }
+            })
+        })
+    </script>
+</body>
+</html>
