@@ -30,9 +30,9 @@
 
                     mapinfo.forEach(function(ele, idx){
                         maptag += `<li>`;
-                        maptag += `<h2 class="storenm"><strong>지점명 </strong><span>${ele.storenm}</span></h2>`;
+                        maptag += `<h2 class="storenm"><strong>지점명 </strong><span>${ele.storenm}</span></h2>`; // ele는 값이기 때문에 3번째처럼 적지 않고 storenm의 값을 가져오라고 명령하면된다.
                         maptag += `<p class="storeem" ><strong>지점장 </strong><span>${ele.storeem}</span></p>`;
-                        maptag += `<p class="addr"><strong>주소 </strong><span>${mapinfo[idx].addr}</span></p>`;
+                        maptag += `<p class="addr"><strong>주소 </strong><span>${mapinfo[idx].addr}</span></p>`; //  mapinfo라고 저장한 store.json에서 addr에 관한 값을 가져와라는 명령
                         maptag += `</li>`;
                     });    
                     $("#store ul").html(maptag);
