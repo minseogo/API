@@ -24,18 +24,18 @@
                 type : "GET",
                 dataType : "json",
                 success : function(mapinfo){
-                    console.log("지점정보", mapinfo);   
+                    console.log("지점정보", mapinfo);  
 
-                    let maptag = `<li>`;
+                    let maptag = ''; // 반드시 초기값은 선언은 for, forEach 안에서 하지 않는다. 대입식도 역시 하지 않는다.
 
-                        maptag += `<h2 class="storenm"><strong>지점명</strong><span>${mapinfo[0].storenm}</span></h2>`;
-                        maptag += `<p class="storeem" ><strong>지점장</strong><span>${mapinfo[0].storeem}</span></p>`;
-                        maptag += `<p class="addr"><strong>주소</strong><span>${mapinfo[0].addr}</span></p>`;
-                        // 데이터에 따라서 커스터마이징
+                    mapinfo.forEach(function(ele, idx){
+                        maptag += `<li>`;
+                        maptag += `<h2 class="storenm"><strong>지점명</strong><span>${mapinfo[idx].storenm}</span></h2>`;
+                        maptag += `<p class="storeem" ><strong>지점장</strong><span>${mapinfo[idx].storeem}</span></p>`;
+                        maptag += `<p class="addr"><strong>주소</strong><span>${mapinfo[idx].addr}</span></p>`;
                         maptag += `</li>`;
-                        
+                    });    
                     $("#store ul").html(maptag);
-
                 },
                 error : function(){
 
