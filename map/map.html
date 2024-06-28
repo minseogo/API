@@ -22,17 +22,15 @@
 
 
 
-    <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=~~"></script>
+    <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=61e~~~"></script>
+
     <!-- Kakao 지도 API를 불러오는 스크립트입니다. appkey를 통해 인증받습니다 -->
 
 <script>
+    
+     // 최적화 식
 
-    const firstdb = JSON.parse(document.querySelector("#mapBtns .btn").dataset.map);
-
-    mapoutput (firstdb[0], firstdb[1]); 
-    // 초기 지도를 신도림 위치로 설정합니다
-
-    const btns = document.querySelectorAll("#mapBtns .btn");
+    const btns = document.querySelectorAll("#mapBtns .btn"); // array 데이터
 
     btns.forEach(function( ele , idx ){
         ele.addEventListener('click', function(){           
@@ -41,7 +39,17 @@
         })
     })
 
-    function  mapoutput (a, b){ // 모형
+    btns[0].click(); // 실행식의 위치 ( 중요 !! )
+
+    let count = 0 ;
+
+    setInterval(function(){
+        count ++; // count 변수를 1씩 증가
+        count %= btns.length; // count를 btns.length (버튼의 총 개수)로 나눈 나머지로 설정
+        btns[count].click(); // btns 배열에서 count 인덱스에 해당하는 버튼을 클릭
+    }, 1000) // setInterval 함수는 1초마다 지정된 함수를 반복 실행
+
+    function  mapoutput (a, b){ // 모형, 선언적 함수
         const mapContainer = document.getElementById('map'),  
         mapOption = { 
             center: new kakao.maps.LatLng(a, b), 
